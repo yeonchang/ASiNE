@@ -1,6 +1,8 @@
 # ASiNE: Adversarial Signed Network Embedding
 This repository provides a reference implementation of *ASiNE* as described in the following paper:
-> Yeon-Chang Lee, Nayoun Seo, Kyungsik Han and Sang-Wook Kim, "ASiNE: Adversarial Signed Network Embedding", In Proc. of the 43rd Int'l ACM Conf. on Research and Development in Information Retrieval (ACM SIGIR 2020)
+> ASiNE: Adversarial Signed Network Embedding
+> Yeon-Chang Lee, Nayoun Seo, Kyungsik Han and Sang-Wook Kim
+> 43rd Int'l ACM Conf. on Research and Development in Information Retrieval (ACM SIGIR 2020)
 
 ### Authors
 - Yeon-Chang Lee (lyc0324@hanyang.ac.kr)
