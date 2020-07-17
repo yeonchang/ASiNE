@@ -11,18 +11,14 @@ This repository provides a reference implementation of *ASiNE* as described in t
 - Sang-Wook Kim (wook@hanyang.ac.kr)
 
 ### Input
-The input files should be saved in `data/` folder. 
-
-The structure of the input file is the following:
+The input files should be saved in `data/` folder. The structure of the input file is the following:
 
 ```node_id1 node_id2 sign```
 
 Node ids start from *0* to *N-1* (*N* is the number of nodes in the graph).
 
 ### Output
-The output files are saved in `results/` folder.
-   
-The first line has the following format:
+The output files are saved in `results/` folder. The first line has the following format:
 
 ```num_of_nodes dim_of_embeddings```
 
