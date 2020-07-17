@@ -7,8 +7,8 @@ sys.path.insert(1, os.path.abspath(os.path.join(os.getcwd(), os.pardir)))
 import tqdm
 import numpy as np
 import tensorflow as tf
-from sklearn.linear_model import LogisticRegression # yc: remove
-from sklearn.metrics import roc_auc_score, f1_score, accuracy_score, roc_curve, auc # yc: remove
+from sklearn.linear_model import LogisticRegression 
+from sklearn.metrics import roc_auc_score, f1_score, accuracy_score, roc_curve, auc 
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 import generator
@@ -233,9 +233,9 @@ class ASiNE(object):
                             self.sess.run(self.pos_generator.g_updates,
                                           feed_dict={self.pos_generator.node_id: np.array(pos_node_1[start:end]),
                                                      self.pos_generator.node_neighbor_id: np.array(pos_node_2[start:end]),
-                                                     self.pos_generator.reward: np.array(pos_reward[start:end])})
-            self.write_embeddings_to_file(epoch)
-            self.evaluation(self, epoch) # yc: remove
+                                                     self.pos_generator.reward: np.array(pos_reward[start:end])})            
+            self.evaluation(self, epoch)
+        self.write_embeddings_to_file()
         print("Complete training")
 
 
@@ -528,7 +528,7 @@ class ASiNE(object):
         return pairs_sign
 
 
-    def write_embeddings_to_file(self, epoch):
+    def write_embeddings_to_file(self):
         # write embeddings of the generator and the discriminator to files
         modes = [self.pos_generator, self.pos_discriminator, self.neg_generator, self.neg_discriminator]
 
@@ -539,12 +539,11 @@ class ASiNE(object):
             embedding_list = embedding_matrix.tolist()
             embedding_str = [str(int(emb[0])) + "\t" + "\t".join([str(x) for x in emb[1:]]) + "\n"
                              for emb in embedding_list]
-            with open(self.config.emb_filenames[i] + "ep%d.emb" % (epoch), "w+") as f:
+            with open(self.config.emb_filenames[i] + ".emb", "w+") as f:
                 lines = [str(self.n_node) + "\t" + str(self.config.n_emb) + "\n"] + embedding_str
                 f.writelines(lines)
 
 
-    # yc: remove
     @staticmethod
     def evaluation(self, epoch):
         modes = [self.pos_generator, self.pos_discriminator]
@@ -587,7 +586,7 @@ class ASiNE(object):
             f1_score_binary = f1_score(Y_test, test_y_pred, average="binary")
 
             acc_result = "{}: {} test : auc_macro {:.4f} f1_macro {:.4f} f1_micro {:.4f} f1_binary {:.4f}  ({})\n".format(
-                            datetime.datetime.now().isoformat(), self.config.emb_filenames[i] + "ep{}.emb".format(epoch), auc_score, f1_score_macro, f1_score_micro, f1_score_binary, link_method)
+                            datetime.datetime.now().isoformat(), self.config.emb_filenames[i] + ".emb".format(epoch), auc_score, f1_score_macro, f1_score_micro, f1_score_binary, link_method)
             print(acc_result)
 
             with open(self.config.result_filename, mode="a+") as f:
@@ -643,9 +642,9 @@ def parse_args():
     args.test_filename = "./data/" + args.dataset + "/" + args.dataset + ".test"
 
     res_fn_path = "./results/" + args.dataset + "_dim" + str(args.n_emb) + "_lr" + str(args.lr)
-    args.emb_filenames = [res_fn_path + "_gen_p_", res_fn_path + "_dis_p_", \
-                          res_fn_path + "_gen_n_", res_fn_path + "_dis_n_"]
-    args.result_filename = res_fn_path + ".txt" # yc: remove
+    args.emb_filenames = [res_fn_path + "_gen_p", res_fn_path + "_dis_p", \
+                          res_fn_path + "_gen_n", res_fn_path + "_dis_n"]
+    args.result_filename = res_fn_path + ".results"
     args.modes = ["gen_p", "dis_p", "gen_n", "dis_n"]
     args.model_log = "./log/"
     args.gen_interval = args.n_epochs_gen
