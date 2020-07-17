@@ -28,11 +28,10 @@ def read_edges(train_filename, test_filename):
             graph[node_1] = []
         if graph.get(node_2) is None:
             graph[node_2] = []
-
-        if train:  # yc: remove
+        
+        if train:
             graph[node_1].append(node_2)
             graph[node_2].append(node_1)
-
 
     pos_graph = {}; neg_graph = {}
     pos_nodes = set()  # roots for the positive BFS tree
@@ -48,7 +47,7 @@ def read_edges(train_filename, test_filename):
         elif edge[2] == -1:
             add_node_to_graph(edge[0], edge[1], neg_graph, positive=False)
 
-    print("\t Reading edges in test file...") # yc: remove
+    print("\t Reading edges in test file...")
     for edge in test_edges:
         if edge[2] == 1:
             add_node_to_graph(edge[0], edge[1], pos_graph, train=False)
