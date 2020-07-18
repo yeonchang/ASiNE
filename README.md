@@ -32,7 +32,7 @@ where dim1, ... , dimk is the *k*-dimensional embedding vectors learned by *ASiN
 
 ```
 --dataset                 Dataset name (default: "wikirfa")
---n_emb                   Dimensionality of embedding. (default: 128)
+--n_emb                   Dimensionality of embedding (default: 128)
 --lr                      Learning rate (default: 0.01)
 --window_size             Size of context window (default: 2)
 --learn_fake_pos          Whether performing the additional learning of the fake positive edges generated from negative generator (default: False)
