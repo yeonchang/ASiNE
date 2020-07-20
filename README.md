@@ -65,7 +65,7 @@ The code has been tested running under Python 3.6. The required packages are as 
 We encourage you to cite our paper if you have used the code in your work. You can use the following BibTex citation:
 ```
 @inproceedings{lee20sigir,
-  authors   = {Yeon{-}Chang Lee and Nayoun Seo and Kyungsik Han and Sang{-}Wook Kim},
+  author   = {Yeon{-}Chang Lee and Nayoun Seo and Kyungsik Han and Sang{-}Wook Kim},
   title     = {ASiNE: Adversarial Signed Network Embedding},
   booktitle = {International ACM SIGIR Conference on Research and Development in Information Retrieval (ACM SIGIR 2020)},      
   year      = {2020}
